@@ -1,0 +1,40 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Incident {
+  description: String!
+  id: ID!
+  ong: Ong!
+  ong_id: String!
+  title: String!
+  value: Float!
+}
+
+type Mutation {
+  createIncident(description: String!, ong_id: String!, title: String!, value: Float!): Incident!
+  createOng(city: String!, email: String!, name: String!, password: String!, uf: String!, whatsapp: String!): Ong!
+  deleteIncident(id: String!): SuccessDeleteIncident!
+}
+
+type Ong {
+  city: String!
+  email: String!
+  id: ID!
+  name: String!
+  password: String!
+  uf: String!
+  whatsapp: String!
+}
+
+type Query {
+  getIncidents(page: Int!): [Incident!]!
+  getOngById(id: String!): Ong!
+  getOngs: [Ong!]!
+}
+
+type SuccessDeleteIncident {
+  description: String!
+  message: String!
+  status_code: Int!
+}
