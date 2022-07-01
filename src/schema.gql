@@ -12,9 +12,9 @@ type Incident {
 }
 
 type Mutation {
-  createIncident(description: String!, ong_id: String!, title: String!, value: Float!): Incident!
+  createIncident(description: String!, ong_id: ID!, title: String!, value: Float!): Incident!
   createOng(city: String!, email: String!, name: String!, password: String!, uf: String!, whatsapp: String!): Ong!
-  deleteIncident(id: String!): SuccessDeleteIncident!
+  deleteIncident(id: ID!): SuccessDeleteIncident!
 }
 
 type Ong {
@@ -29,7 +29,7 @@ type Ong {
 
 type Query {
   getIncidents(page: Int!): [Incident!]!
-  getOngById(id: String!): Ong!
+  getOngById(id: ID!): Ong!
   getOngs: [Ong!]!
 }
 

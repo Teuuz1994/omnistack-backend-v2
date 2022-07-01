@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, ID } from '@nestjs/graphql';
 import { InternalServerErrorException } from '@nestjs/common';
 
 import PrismaClientService from '@/shared/prisma/prisma-client-service';
@@ -28,7 +28,7 @@ export default class OngsResolver {
   }
 
   @Query(() => Ong)
-  async getOngById(@Args({ name: 'id' }) id: string) {
+  async getOngById(@Args({ name: 'id', type: () => ID }) id: string) {
     try {
       const ong = await this.client.ongs.findFirst({
         where: {

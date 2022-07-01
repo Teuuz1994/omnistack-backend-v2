@@ -1,4 +1,4 @@
-import { ArgsType, Field, Float } from '@nestjs/graphql';
+import { ArgsType, Field, Float, ID } from '@nestjs/graphql';
 
 @ArgsType()
 export default class CreateIncidentArgs {
@@ -11,6 +11,6 @@ export default class CreateIncidentArgs {
   @Field(() => Float)
   value: number;
 
-  @Field({ nullable: false })
+  @Field(() => ID)
   ong_id: string;
 }

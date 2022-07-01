@@ -1,5 +1,5 @@
 import { InternalServerErrorException } from '@nestjs/common';
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Int, ID } from '@nestjs/graphql';
 
 import PrismaClientService from '@/shared/prisma/prisma-client-service';
 import CreateIncidentArgs from '../args/create-incident-args';
@@ -34,7 +34,7 @@ class IncidentsResolver {
   }
 
   @Mutation(() => SuccessDeleteIncident)
-  async deleteIncident(@Args({ name: 'id' }) id: string) {
+  async deleteIncident(@Args({ name: 'id', type: () => ID }) id: string) {
     try {
       await this.deleteIncidentService.execute(id);
       return {
